@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title >TP Hamel</title>
+    <style>
+        .forms {
+            display:flex;
+            flex-wrap:wrap;
+        }
+        .head {
+            text-align: center;
+        }
+
+        body div {
+            color:white;
+        }
+        div.books{
+            display:flex;
+            flex-wrap: wrap;
+        }
+        div.book{
+            display:flexbox;
+            background-color: white;
+            margin:5px;
+            padding:5px;
+            border:1px solid black;
+            border-radius:5px;
+            color:darkblue;
+            width:30%;
+        }
+        ul.nav li{
+            display:inline-block;
+            padding:10px;
+            border-radius: 5px;
+            background-color: gray;
+            margin:0 10px;
+           
+            font-weight: bold;
+            border : 2px solid black;
+        }
+        ul.nav li.current{
+            background-color: black;
+        }
+        ul.nav li a{
+            color:white;
+            text-decoration: none;
+        }
+
+       
+    </style>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.0.1.min.js"></script> 
+  </head>
+  <body style="background-color:darkslategray;">
+    <div class="head">
+        <h1 style="color:white;font-weight:bold;">My wonderful Library</h1>
+        <h2 style="color:lightgray;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">using MongoDB</h2>
+    </div>
+    <ul class="nav"><li><a href ="/">Home</a></li><li  ><a href="/stats">Stats</a></li><li ><a href="/infos">Infos</a></li><li class="current"><a  href="/graphs">Graphiques</a></li></ul>
+
+    <b style="color:lightgray">Les beaux graphiques :</b><br>
+    {{ div | safe }} 
+    {{ script | safe }} 
+<br/><br/>
+    {{ div_types | safe }} 
+    {{ script_types | safe }} 
+
+  </body>
+</html>

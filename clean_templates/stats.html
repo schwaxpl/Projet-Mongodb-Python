@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <title >TP Hamel</title>
+    <style>
+        .forms {
+            display:flex;
+            flex-wrap:wrap;
+        }
+        .head {
+            text-align: center;
+        }
+
+        body div {
+            color:white;
+        }
+        div.books{
+            display:flex;
+            flex-wrap: wrap;
+        }
+        div.sub{
+            font-size:10px;
+            display:flexbox;
+            background-color: antiquewhite;
+            margin:2px;
+            padding:2px;
+            border:1px solid black;
+            border-radius:3px;
+            color:darkolivegreen;
+            width:95%;
+        }
+        div.book{
+            display:flexbox;
+            background-color: white;
+            margin:5px;
+            padding:5px;
+            border:1px solid black;
+            border-radius:5px;
+            color:darkblue;
+            width:30%;
+        }
+        ul.nav li{
+            display:inline-block;
+            padding:10px;
+            border-radius: 5px;
+            background-color: gray;
+            margin:0 10px;
+           
+            font-weight: bold;
+            border : 2px solid black;
+        }
+        ul.nav li.current{
+            background-color: black;
+        }
+        ul.nav li a{
+            color:white;
+            text-decoration: none;
+        }
+
+       
+</style>
+  </head>
+  <body style="background-color:darkslategrey;">
+    <div class="head">
+        <h1 style="color:white;font-weight:bold;">My wonderful Library</h1>
+        <h2 style="color:lightgray;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">using MongoDB</h2>
+    </div>
+    <ul class="nav"><li><a href ="/">Home</a></li><li  class="current"><a href="/stats">Stats</a></li><li ><a href="/infos">Infos</a></li><li><a href="/graphs">Graphiques</a></li></ul>
+
+    <b style="color:lightgray">Statistiques :</b><br>
+    <br>
+    <div class="books">
+       
+        {% for k,d in stats.items() %}
+        <div class="book">
+            <b class="blink_me">{{ k }}</b> = {% autoescape false %}{{ d }}{% endautoescape %} <br/>
+            
+        </div>
+        {% endfor %}
+        <div class="book">
+            <b>Nombre de licornes affichées</b> : <label id="nbLicornes"><br/>0 ( car on est sur la version triste )</label>
+        </div>
+    </div>
+    
+  </body>
+</html>

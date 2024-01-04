@@ -1,0 +1,181 @@
+<html>
+  <head>
+    <title >TP Hamel</title>
+    <style>
+        .forms {
+            display:flex;
+            flex-wrap:wrap;
+        }
+        .head {
+            text-align: center;
+        }
+
+        body div {
+            color:white;
+        }
+        div.books{
+            display:flex;
+            flex-wrap: wrap;
+        }
+        div.book{
+            display:flexbox;
+            background-color: white;
+            margin:5px;
+            padding:5px;
+            border:1px solid black;
+            border-radius:5px;
+            color:darkblue;
+            width:30%;
+        }
+        ul.nav li{
+            display:inline-block;
+            padding:10px;
+            border-radius: 5px;
+            background-color: gray;
+            margin:0 10px;
+           
+            font-weight: bold;
+            border : 2px solid black;
+        }
+        ul.nav li.current{
+            background-color: black;
+        }
+        ul.nav li a{
+            color:white;
+            text-decoration: none;
+        }
+
+       
+</style>
+  </head>
+  <body style="background-color:darkslategrey;">
+    <div class="head">
+        <h1 style="color:white;font-weight:bold;">My wonderful Library</h1>
+        <h2 style="color:lightgray;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">using MongoDB</h2>
+    </div>
+    <ul class="nav"><li class="current"><a href ="/">Home</a></li><li><a href="/stats">Stats</a></li><li ><a href="/infos">Infos</a></li><li><a href="/graphs">Graphiques</a></li></ul>
+
+    <div class="forms">
+        <div class="form">
+        <form method="POST">
+            {{ cform.hidden_tag() }}
+            <fieldset>
+                <legend>Créer un livre</legend>
+                {{ cform.type.label }}<br>
+                {{ cform.type }}<br>
+                {{ cform.auteurs.label }}<br>
+                {{ cform.auteurs }}<br>
+                {{ cform.titre.label }}<br>
+                {{ cform.titre }}<br><br>
+                {{ cform.year.label }}<br>
+                {{ cform.year }}<br><br/>
+                {{ cform.create }}
+            </fieldset>
+        </form>
+    </div>
+    <div class="form">
+        <form  method="POST">
+            {{ uform.hidden_tag() }}
+            <fieldset>
+                <legend>Mise à jour livre</legend>
+                {{ uform.key.label }}<br>
+                {{ uform.key }}<br><br>
+                Champs à modifier :<br><br>
+                {{ uform.titre.label }}<br>
+                {{ uform.titre }}<br>
+                {{ uform.annee.label }}<br>
+                {{ uform.annee }}<br><br/>
+                {{ uform.update }}
+            </fieldset>
+        </form>
+    </div>
+        <div class="form">
+            <form method="POST">
+                {{ dform.hidden_tag() }}
+                <fieldset>
+                    <legend>Supprimer livre</legend>
+                    {{ dform.key.label }}<br>
+                    {{ dform.key }}<br>
+                    {{ dform.auteur.label }}<br>
+                    {{ dform.auteur }}<br>
+                    {{ dform.annee.label }}<br>
+                    {{ dform.annee }}<br><br/>
+                    {{ dform.delete }}
+                </fieldset>
+            </form>
+        </div>
+        <div class="form">
+            <form method="POST">
+                {{ sform.hidden_tag() }}
+                <fieldset>
+                    <legend>Recherche livre</legend>
+                    {{ sform.auteur.label }}<br>
+                    {{ sform.auteur}}<br>
+                    {{ sform.titre.label }}<br>
+                    {{ sform.titre}}<br>
+                    {{ sform.annee.label }}<br>
+                    {{ sform.annee}}<br>
+                    {{ sform.type.label }}<br>
+                    {{ sform.type}}<br>
+                    {{ sform.tri.label }}<br>
+                    {{ sform.tri}}{{ sform.sens_tri}}<br>
+                    {{ sform.page_debut.label }}<br/>
+                    {{ sform.page_debut}}<br>
+                    {{ sform.nb_resultats.label }}
+                    {{ sform.nb_resultats}}<br><br/>
+                    {{ sform.search }}
+                </fieldset>
+            </form>
+        </div>
+    
+    </div>
+    <br>
+    <br>
+    <b style="color:lightblue">Bibliothèque :</b><br>
+    Affichage de {{nb_limite}} sur {{nb_total}} ( <b>{{debut}}</b> à <b>{{fin}}</b> )<br>
+    <div class="books">
+    {% for i in data %}
+        <div class="book">
+            <small><b>ID</b> = {{ i["_id"] }}</small><br/>
+            <b>Type</b> = {{ i["type"] }} <br/>
+            <b>Titre</b> = {{ i["title"] }}<br/>
+            <b>Année</b> = {{ i["year"] }} <br/>
+            <b>Auteur(s)</b> : {{i["authors"]}}
+        </div>
+    {% endfor %}
+    </div>
+
+    <div class="footer">
+        <div class="text">
+        Cette page a été visitée 
+        </div>
+        <span class="number" data-number="0">
+            <span class="primary">
+            </span>
+            <span class="secondary">
+            </span>
+          </span>
+          <span class="number" data-number="1">
+            <span class="primary">
+            </span>
+            <span class="secondary">
+            </span>
+          </span>
+          <span class="number" data-number="3">
+            <span class="primary">
+            </span>
+            <span class="secondary">
+            </span>
+          </span>
+          <span class="number" data-number="7">
+            <span class="primary">
+            </span>
+            <span class="secondary">
+            </span>
+          </span>
+<div class="text">
+          fois !
+        </div>
+    </div>
+  </body>
+</html>
