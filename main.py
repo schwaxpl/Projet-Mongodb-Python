@@ -1,14 +1,12 @@
-from pymongo import MongoClient
+
 from flask import Flask, render_template, redirect,request
 from books import *
 from graphs_bokeh import *
+import config
+app = Flask(__name__,template_folder=config.template)
 
-app = Flask(__name__)
-
-
-client = MongoClient("localhost", 27017)
-db = client["WouawLaDb"]
-collection = db["Books"]
+db = config.db
+books = config.collection
 
 def createTask(form):
     
@@ -25,7 +23,7 @@ def createTask(form):
     
     book = {'_id':id, 'title':titre, 'type':type, 'year':annee,"authors":auteurs}
 
-    db.Books.insert_one(book)
+    books.insert_one(book)
     print("CREATE")
     #return redirect('/')
 
@@ -46,7 +44,7 @@ def deleteTask(form):
     if(annee):
         deleteQuery["year"] = annee
     if(deleteQuery != {}):
-        db.Books.delete_many(deleteQuery)
+        books.delete_many(deleteQuery)
 
     #return redirect('/')
 
@@ -61,22 +59,13 @@ def updateTask(form):
         updateQuery["year"] = annee
 
     if(updateQuery!={}):
-        db.Books.update_one(
+        books.update_one(
             {"_id": key},
             {"$set":
                 updateQuery
             }
         )
 
-    #return redirect('/')
-
-#def resetTask(form):
-#    db.tasks.drop()
-#    db.settings.drop()
-#    db.settings.insert_one({'name':'task_id', 'value':0})
-#    return redirect('/')
-
-      
 
 @app.route('/', methods=['GET','POST'])
 def main():
@@ -130,10 +119,10 @@ def main():
         skip = (sform.page_debut.data-1)*limit
         filter.append({"$skip":skip})
     debut = 1 + skip
-    nb_total = db.Books.count_documents(matchFilter)
+    nb_total = books.count_documents(matchFilter)
 
     filter.append({"$limit":limit})
-    docs = db.Books.aggregate(filter)
+    docs = books.aggregate(filter)
     
     data = []
     for i in docs:
@@ -150,7 +139,7 @@ def main():
 def stats():
 
    
-    top_10_auteurs = db.Books.aggregate([{ "$unwind": { "path": '$authors' } },
+    top_10_auteurs = books.aggregate([{ "$unwind": { "path": '$authors' } },
     {
       "$group": {
         "_id": '$authors',
@@ -168,7 +157,7 @@ def stats():
         cpt+=1
     auteurs_html +=""
 
-    top_10_articles = db.Books.aggregate([
+    top_10_articles = books.aggregate([
     {
       "$match": {
         "type": 'Article',
@@ -226,10 +215,10 @@ def infos():
 def graphs():
 
 
-    ga = graph_annees(db,client)
+    ga = graph_annees(books)
         # Get Chart Components 
     script, div = components(ga) 
-    gt = graph_types(db,client)
+    gt = graph_types(books)
         # Get Chart Components 
     script_types, div_types = components(gt) 
   

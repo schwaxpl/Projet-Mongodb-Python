@@ -1,11 +1,10 @@
 from bokeh.embed import components 
 from bokeh.plotting import figure 
 from bokeh.palettes import Light8 as palette
-from pymongo import MongoClient
 import math
-def graph_annees(db,client):
+def graph_annees(col):
     # Defining Chart Data 
-    data = db.Books.aggregate([{"$group": {"_id": '$year',"nbLivres": { "$sum": 1 }}},{"$sort":{"_id":1}}])
+    data = col.aggregate([{"$group": {"_id": '$year',"nbLivres": { "$sum": 1 }}},{"$sort":{"_id":1}}])
 
     annees = []
     nb = []
@@ -29,9 +28,9 @@ def graph_annees(db,client):
     
     return p
 
-def graph_types(db,client):
+def graph_types(col):
     # Defining Chart Data 
-    data = db.Books.aggregate([{"$group": {"_id": '$type',"nbLivres": { "$sum": 1 }}},{"$sort":{"_id":1}}])
+    data = col.aggregate([{"$group": {"_id": '$type',"nbLivres": { "$sum": 1 }}},{"$sort":{"_id":1}}])
 
     types = []
     nb = []
