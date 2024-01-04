@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <title >TP Hamel</title>
+    <style>
+        body
+        {
+        cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='80' height='96' viewport='0 0 100 100' style='fill:black;font-size:48px;'><text y='50%'>👶🏻</text></svg>") 16 0,auto; /*!emojicursor.app*/
+        }
+        .forms {
+            display:flex;
+            flex-wrap:wrap;
+        }
+        .head {
+            text-align: center;
+        }
+
+        body div {
+            color:lightpink;
+        }
+        div.books{
+            display:flex;
+            flex-wrap: wrap;
+        }
+        div.book{
+            display:flexbox;
+            background-color: aquamarine;
+            margin:5px;
+            padding:5px;
+            border:1px solid black;
+            border-radius:5px;
+            color:darkblue;
+            width:30%;
+        }
+        ul.nav li{
+            display:inline-block;
+            padding:10px;
+            border-radius: 5px;
+            background-color: gray;
+            margin:0 10px;
+           
+            font-weight: bold;
+            border : 2px solid lime;
+        }
+        ul.nav li.current{
+            background-color: green;
+        }
+        ul.nav li a{
+            color:white;
+            text-decoration: none;
+        }
+    </style>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.0.1.min.js"></script> 
+  </head>
+  <body style="background-color:darkslategray;">
+    <div class="head">
+        <h1 style="color:darkorchid;font-weight:bold;">My wonderful Library</h1>
+        <h2 style="color:plum;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">using MongoDB</h2>
+    </div>
+    <ul class="nav"><li><a href ="/">Home</a></li><li  ><a href="/stats">Stats</a></li><li ><a href="/infos">Infos</a></li><li class="current"><a  href="/graphs">Graphiques</a></li><li>⚠️ Site non recommandé si vous êtes photosensible ou sujet à l'épilepsie ⚠️</li></ul>
+
+    <b style="color:chartreuse">Les beaux graphiques :</b><br>
+    {{ div | safe }} 
+    {{ script | safe }} 
+<br/><br/>
+    {{ div_types | safe }} 
+    {{ script_types | safe }} 
+
+    <div style="position:absolute;top:10px;right:10px;">
+        <iframe src="https://giphy.com/embed/14kqI3Y4urS3rG" width="120" height="110" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/baby-internet-vintage-14kqI3Y4urS3rG">via GIPHY</a></p>
+    </div>
+  </body>
+</html>

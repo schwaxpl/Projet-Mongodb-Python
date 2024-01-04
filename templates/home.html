@@ -1,0 +1,691 @@
+<html>
+  <head>
+    <title >TP Hamel</title>
+    <style>
+        body {
+            cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👍</text></svg>") 16 0,auto; /*!emojicursor.app*/
+        }
+        .forms {
+            display:flex;
+            flex-wrap:wrap;
+        }
+        .head {
+            text-align: center;
+        }
+
+        body div {
+            color:lightpink;
+        }
+        div.books{
+            display:flex;
+            flex-wrap: wrap;
+        }
+        div.book{
+            display:flexbox;
+            background-color: aquamarine;
+            margin:5px;
+            padding:5px;
+            border:1px solid black;
+            border-radius:5px;
+            color:darkblue;
+            width:30%;
+        }
+        ul.nav li{
+            display:inline-block;
+            padding:10px;
+            border-radius: 5px;
+            background-color: gray;
+            margin:0 10px;
+           
+            font-weight: bold;
+            border : 2px solid lime;
+        }
+        ul.nav li.current{
+            background-color: green;
+        }
+        ul.nav li a{
+            color:white;
+            text-decoration: none;
+        }
+
+        .footer{
+            width:100%;
+            min-height: 50px;
+            background-color:white;
+            border-width: 4px 0;
+            border-color: gray;
+            padding-left:40%;
+            padding-top:10px;
+        }
+        div.footer div.text{
+            display:block;
+            float:left;
+            font-size: 1.5em;
+        }
+        .snowflake{
+  position:absolute;
+  top:-40px;
+  transition: left 5s;
+  opacity:1;
+  color: #fff;
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+@keyframes animate-top {
+  0% {
+   background: #3e3e3e; /* Old browsers */
+background: -moz-linear-gradient(top,  #3e3e3e 0%, #2b2b2b 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3e3e3e), color-stop(100%,#2b2b2b)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #3e3e3e 0%,#2b2b2b 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #3e3e3e 0%,#2b2b2b 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #3e3e3e 0%,#2b2b2b 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #3e3e3e 0%,#2b2b2b 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e3e3e', endColorstr='#2b2b2b',GradientType=0 );
+  }
+  
+  100% {
+    color: #474747;
+    
+    transform: 
+      translateX(0px) 
+      translateY(0.35em) 
+      translateZ(5px) 
+      rotateX(-90deg)
+      rotateY(0deg)
+      rotateZ(0deg);
+  }
+}
+
+@keyframes animate-bottom {
+  0% {
+    color: #474747;
+    opacity: 1;
+  }
+  
+  100% {
+    transform: 
+      translateX(0) 
+      translateY(0) 
+      translateZ(0) 
+      rotateX(0deg) 
+      rotateY(0deg)
+      rotateZ(0deg);
+    
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes animate-top {
+  0% {
+   background: #3e3e3e; /* Old browsers */
+background: -moz-linear-gradient(top,  #3e3e3e 0%, #2b2b2b 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3e3e3e), color-stop(100%,#2b2b2b)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #3e3e3e 0%,#2b2b2b 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #3e3e3e 0%,#2b2b2b 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #3e3e3e 0%,#2b2b2b 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #3e3e3e 0%,#2b2b2b 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e3e3e', endColorstr='#2b2b2b',GradientType=0 );
+  }
+  
+  100% {
+    color: #474747;
+    
+    -webkit-transform: 
+      translateX(0px) 
+      translateY(0.35em) 
+      translateZ(5px) 
+      rotateX(-90deg)
+      rotateY(0deg)
+      rotateZ(0deg);
+  }
+}
+
+@-webkit-keyframes animate-bottom {
+  0% {
+    color: #474747;
+    opacity: 1;
+  }
+  
+  100% {
+    -webkit-transform: 
+      translateX(0) 
+      translateY(0) 
+      translateZ(0) 
+      rotateX(0deg) 
+      rotateY(0deg)
+      rotateZ(0deg);
+    
+    opacity: 1;
+  }
+}
+
+.number {
+  position: relative;
+  float: left;
+  margin-right: 5px;
+  
+  font-size: 1em;
+  
+  width: 1em;
+  height: 1.5em;
+}
+
+.number span {
+  position: absolute;
+  display: block;
+  font-weight: bold;
+  text-align: center;
+  
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  
+  color: white;
+  
+  width: 1em;
+  height: 1.5em;
+  perspective: 7.14em;
+  
+}
+
+.number span:before {
+  display: block;
+  height: 0.75em;
+  overflow: hidden;
+  
+  line-height: 1.52em;
+  
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  
+  border-radius: 20% 20% 0 0;
+  
+  background: #3e3e3e; /* Old browsers */
+background: -moz-linear-gradient(top,  #3e3e3e 0%, #2b2b2b 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3e3e3e), color-stop(100%,#2b2b2b)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #3e3e3e 0%,#2b2b2b 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #3e3e3e 0%,#2b2b2b 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #3e3e3e 0%,#2b2b2b 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #3e3e3e 0%,#2b2b2b 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e3e3e', endColorstr='#2b2b2b',GradientType=0 ); /* IE6-9 */
+}
+
+.number span:after {
+  display: block;
+  height: 0.75em;
+  overflow: hidden;
+  line-height: 0;
+  
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  
+  border-radius: 0 0 20% 20%;
+  
+  transition: color 100ms, background-color 100ms;
+  
+  background: #252525; /* Old browsers */
+background: -moz-linear-gradient(top,  #252525 0%, #070707 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#252525), color-stop(100%,#070707)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #252525 0%,#070707 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #252525 0%,#070707 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #252525 0%,#070707 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #252525 0%,#070707 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#252525', endColorstr='#070707',GradientType=0 ); /* IE6-9 */
+}
+
+
+.flip .primary:before {
+  animation: animate-top 250ms;
+  -moz-animation-fill-mode: forwards;
+  
+  -webkit-animation: animate-top 250ms;
+  -webkit-animation-fill-mode: forwards;
+  
+  
+  background: #000000; /* Old browsers */
+background: -moz-linear-gradient(top,  #000000 0%, #303030 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(100%,#303030)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #000000 0%,#303030 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #000000 0%,#303030 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #000000 0%,#303030 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #000000 0%,#303030 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#303030',GradientType=0 ); /* IE6-9 */
+
+}
+
+.flip .primary:after {
+  animation: animate-bottom 250ms;
+  -moz-animation-fill-mode: forwards;
+  animation-delay: 250ms;
+  
+  -webkit-animation: animate-bottom 250ms;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-delay: 250ms;
+}
+
+.primary:after {
+  opacity: 0;
+  
+  transform: 
+    translateX(0) 
+    translateY(-0.28em) 
+    translateZ(0.35em) 
+    rotateX(91deg) 
+    rotateY(0deg) 
+    rotateZ(0deg);
+  
+  -webkit-transform: 
+    translateX(0) 
+    translateY(-0.28em) 
+    translateZ(0.35em) 
+    rotateX(91deg) 
+    rotateY(0deg) 
+    rotateZ(0deg);
+}
+
+.primary {
+  z-index: 2;
+}
+
+.secondary {
+  z-index: 1;
+}
+
+/* Number 0 */
+
+[data-number="0"] span.primary:before {
+  content: "0";
+}
+
+[data-number="0"] span.secondary:after {
+  content: "0";
+}
+
+[data-number="0"] span.secondary:before {
+  content: attr(title);
+}
+
+[data-number="0"] span.primary:after {
+  content: attr(title);
+}
+
+/* Number 9 */
+
+[data-number="9"] span.primary:before {
+  content: "9";
+}
+
+[data-number="9"] span.secondary:after {
+  content: "9";
+}
+
+[data-number="9"] span.secondary:before {
+  content: attr(title);
+}
+
+[data-number="9"] span.primary:after {
+  content: attr(title);
+}
+
+/* Number 8 */
+
+[data-number="8"] span.primary:before {
+  content: "8";
+}
+
+[data-number="8"] span.secondary:after {
+  content: "8";
+}
+
+[data-number="8"] span.secondary:before {
+  content: attr(title);
+}
+
+[data-number="8"] span.primary:after {
+  content: attr(title);
+}
+
+/* Number 7 */
+
+[data-number="7"] span.primary:before {
+  content: "7";
+}
+
+[data-number="7"] span.secondary:after {
+  content: "7";
+}
+
+[data-number="7"] span.secondary:before {
+  content: attr(title);
+}
+
+[data-number="7"] span.primary:after {
+  content: attr(title);
+}
+
+/* Number 6 */
+
+[data-number="6"] span.primary:before {
+  content: "6";
+}
+
+[data-number="6"] span.secondary:after {
+  content: "6";
+}
+
+[data-number="6"] span.secondary:before {
+  content: attr(title);
+}
+
+[data-number="6"] span.primary:after {
+  content: attr(title);
+}
+
+/* Number 5 */
+
+[data-number="5"] span.primary:before {
+  content: attr(title);
+}
+
+[data-number="5"] span.secondary:after {
+  content: attr(title);
+}
+
+[data-number="5"] span.secondary:before {
+  content: attr(title);
+}
+
+[data-number="5"] span.primary:after {
+  content: attr(title);
+}
+
+/* Number 4 */
+
+[data-number="4"] span.primary:before {
+  content: "4";
+}
+
+[data-number="4"] span.secondary:after {
+  content: "4";
+}
+
+[data-number="4"] span.secondary:before {
+  content: attr(title);
+}
+
+[data-number="4"] span.primary:after {
+  content: attr(title);
+}
+
+/* Number 3 */
+
+[data-number="3"] span.primary:before {
+  content: attr(title);
+}
+
+[data-number="3"] span.secondary:after {
+  content: attr(title);
+}
+
+[data-number="3"] span.secondary:before {
+  content: attr(title);
+}
+
+[data-number="3"] span.primary:after {
+  content: attr(title);
+}
+
+/* Number 2 */
+
+[data-number="2"] span.primary:before {
+  content: "2";
+}
+
+[data-number="2"] span.secondary:after {
+  content: "2";
+}
+
+[data-number="2"] span.secondary:before {
+  content: attr(title);
+}
+
+[data-number="2"] span.primary:after {
+  content: attr(title);
+}
+
+/* Number 1 */
+
+[data-number="1"] span.primary:before {
+  content: "1";
+}
+
+[data-number="1"] span.secondary:after {
+  content: "1";
+}
+
+[data-number="1"] span.secondary:before {
+  content: attr(title);
+}
+
+[data-number="1"] span.primary:after {
+  content: attr(title);
+}
+</style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        var snow_intensity = 50; // smaller number = more snowflakes;
+        function Snowflake(){
+            var snowflake = this;
+            snowflake.x = (Math.random() * $(document).width());
+            snowflake.size = (Math.random() * 35) + 10;
+            snowflake.opacity = Math.random();
+            snowflake.body = $("<em class='snowflake'>*</em>");
+            snowflake.body.css({'font-size': this.size + 'px', 'left': this.x +'px', opacity: this.opacity });
+            snowflake.fall = function(){
+            var that = this;
+            var $snowflake = this.body;
+            var swing_direction = 1;
+            var swing_wave = Math.random() * 100;
+            var interval = setInterval(function(){
+                $snowflake.css({left: that.x + (swing_direction * swing_wave)});
+                swing_direction = - swing_direction;
+            }, 1000);
+            var speed = (Math.random() * 3000) + 3000;
+            $snowflake.animate({top: '100vh'}, speed, function(){
+                clearInterval(interval);
+                $snowflake.remove();
+            });    
+            }
+            $('body').append(snowflake.body);
+            snowflake.fall();
+        }
+        
+        var snow = window.setInterval(function () {
+            new Snowflake();
+        }, snow_intensity);
+        
+        document.onkeypress = function () {
+            window.clearInterval(snow);
+        };
+
+
+        setInterval(function() {
+  doFlip(3);
+}, 1000);
+
+function doFlip(numberIndex, count) {
+  if (count === undefined) {
+    count = 1;
+  }
+  
+  var currentNumberElement = $(".number:eq(" + numberIndex + ")");
+  
+  var currentNumber = Number(currentNumberElement.attr("data-number"));    
+
+  currentNumber += count;
+  var makeAFlip = false;
+  
+  if (currentNumber < 0) {
+    currentNumber = 10 + currentNumber;
+    makeAFlip = true;
+  }
+  if (currentNumber > 9) {
+    currentNumber =  currentNumber-10;
+    makeAFlip = true;
+  }
+  currentNumberElement.find(".primary").attr("title", currentNumber);
+  currentNumberElement.find(".secondary").attr("title", currentNumber);
+  
+  if (makeAFlip) {
+    if (numberIndex > 0) {
+      doFlip(--numberIndex);
+    }
+  } 
+  
+  currentNumberElement.addClass("flip");
+  
+  setTimeout(function() {
+    currentNumberElement.attr("data-number", currentNumber);
+    
+    currentNumberElement.removeClass("flip");
+  }, 500);
+}
+    </script>
+  </head>
+  <body style="background-color:mediumpurple;">
+    <div class="head">
+        <h1 style="color:darkorchid;font-weight:bold;">My wonderful Library</h1>
+        <h2 style="color:plum;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">using MongoDB</h2>
+    </div>
+    <ul class="nav"><li class="current"><a href ="/">Home</a></li><li><a href="/stats">Stats</a></li><li ><a href="/infos">Infos</a></li><li><a href="/graphs">Graphiques</a></li><li>⚠️ Site non recommandé si vous êtes photosensible ou sujet à l'épilepsie ⚠️</li></ul>
+
+    <div class="forms">
+        <div class="form">
+        <form method="POST">
+            {{ cform.hidden_tag() }}
+            <fieldset>
+                <legend>Créer un livre</legend>
+                {{ cform.type.label }}<br>
+                {{ cform.type }}<br>
+                {{ cform.auteurs.label }}<br>
+                {{ cform.auteurs }}<br>
+                {{ cform.titre.label }}<br>
+                {{ cform.titre }}<br><br>
+                {{ cform.year.label }}<br>
+                {{ cform.year }}<br><br/>
+                {{ cform.create }}
+            </fieldset>
+        </form>
+    </div>
+    <div class="form">
+        <form  method="POST">
+            {{ uform.hidden_tag() }}
+            <fieldset>
+                <legend>Mise à jour livre</legend>
+                {{ uform.key.label }}<br>
+                {{ uform.key }}<br><br>
+                Champs à modifier :<br><br>
+                {{ uform.titre.label }}<br>
+                {{ uform.titre }}<br>
+                {{ uform.annee.label }}<br>
+                {{ uform.annee }}<br><br/>
+                {{ uform.update }}
+            </fieldset>
+        </form>
+    </div>
+        <div class="form">
+            <form method="POST">
+                {{ dform.hidden_tag() }}
+                <fieldset>
+                    <legend>Supprimer livre</legend>
+                    {{ dform.key.label }}<br>
+                    {{ dform.key }}<br>
+                    {{ dform.auteur.label }}<br>
+                    {{ dform.auteur }}<br>
+                    {{ dform.annee.label }}<br>
+                    {{ dform.annee }}<br><br/>
+                    {{ dform.delete }}
+                </fieldset>
+            </form>
+        </div>
+        <div class="form">
+            <form method="POST">
+                {{ sform.hidden_tag() }}
+                <fieldset>
+                    <legend>Recherche livre</legend>
+                    {{ sform.auteur.label }}<br>
+                    {{ sform.auteur}}<br>
+                    {{ sform.titre.label }}<br>
+                    {{ sform.titre}}<br>
+                    {{ sform.annee.label }}<br>
+                    {{ sform.annee}}<br>
+                    {{ sform.type.label }}<br>
+                    {{ sform.type}}<br>
+                    {{ sform.tri.label }}<br>
+                    {{ sform.tri}}{{ sform.sens_tri}}<br>
+                    {{ sform.page_debut.label }}<br/>
+                    {{ sform.page_debut}}<br>
+                    {{ sform.nb_resultats.label }}
+                    {{ sform.nb_resultats}}<br><br/>
+                    {{ sform.search }}
+                </fieldset>
+            </form>
+        </div>
+    
+    </div>
+    <br>
+    <br>
+    <b style="color:chartreuse">Bibliothèque :</b><br>
+    Affichage de {{nb_limite}} sur {{nb_total}} ( <b>{{debut}}</b> à <b>{{fin}}</b> )<br>
+    <div class="books">
+    {% for i in data %}
+        <div class="book">
+            <small><b>ID</b> = {{ i["_id"] }}</small><br/>
+            <b>Type</b> = {{ i["type"] }} <br/>
+            <b>Titre</b> = {{ i["title"] }}<br/>
+            <b>Année</b> = {{ i["year"] }} <br/>
+            <b>Auteur(s)</b> : {{i["authors"]}}
+        </div>
+    {% endfor %}
+    </div>
+
+    <div class="footer">
+        <div class="text">
+        Cette page a été visitée 
+        </div>
+        <span class="number" data-number="0">
+            <span class="primary">
+            </span>
+            <span class="secondary">
+            </span>
+          </span>
+          <span class="number" data-number="1">
+            <span class="primary">
+            </span>
+            <span class="secondary">
+            </span>
+          </span>
+          <span class="number" data-number="3">
+            <span class="primary">
+            </span>
+            <span class="secondary">
+            </span>
+          </span>
+          <span class="number" data-number="7">
+            <span class="primary">
+            </span>
+            <span class="secondary">
+            </span>
+          </span>
+<div class="text">
+          fois !
+        </div>
+    </div>
+  </body>
+</html>
