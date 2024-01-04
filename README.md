@@ -19,7 +19,12 @@ flask-wtf
 
 **Config:**
 
+Installer les dépendances :
+dans le répertoire $ python -r requirements.txt
+
 modifier le main.py pour configurer votre DB et votre client
 Attention la collection utilisée est Books avec une majuscule
+
+
 
 Enjoy la beauté du tp!
