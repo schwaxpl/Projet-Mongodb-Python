@@ -4,13 +4,11 @@ Projet pour la 4e semaine de POEC Data Engineer Diginamic
 
 requirements :
 
-Bokeh
-
+Bokeh 3.0.1
 flask 2.2.2
-
 pymongo
-
 WTForms
+flask-wtf
 
 
 Config:
