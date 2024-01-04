@@ -3,13 +3,7 @@ from bokeh.plotting import figure
 from bokeh.palettes import Light8 as palette
 from pymongo import MongoClient
 import math
-import itertools
-
-client = MongoClient("localhost", 27017)
-db = client["WouawLaDb"]
-collection = db["Books"]
-
-def graph_annees():
+def graph_annees(db,client):
     # Defining Chart Data 
     data = db.Books.aggregate([{"$group": {"_id": '$year',"nbLivres": { "$sum": 1 }}},{"$sort":{"_id":1}}])
 
@@ -35,7 +29,7 @@ def graph_annees():
     
     return p
 
-def graph_types():
+def graph_types(db,client):
     # Defining Chart Data 
     data = db.Books.aggregate([{"$group": {"_id": '$type',"nbLivres": { "$sum": 1 }}},{"$sort":{"_id":1}}])
 

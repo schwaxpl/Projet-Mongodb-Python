@@ -226,10 +226,10 @@ def infos():
 def graphs():
 
 
-    ga = graph_annees()
+    ga = graph_annees(db,client)
         # Get Chart Components 
     script, div = components(ga) 
-    gt = graph_types()
+    gt = graph_types(db,client)
         # Get Chart Components 
     script_types, div_types = components(gt) 
   
