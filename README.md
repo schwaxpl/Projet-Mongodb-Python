@@ -24,9 +24,9 @@ Installer les dépendances :
 dans le répertoire $ python -r requirements.txt
 
 
-modifier le main.py pour configurer votre DB et votre client
+modifier le config.py pour configurer votre DB, client, collection
 
-Attention la collection utilisée est Books avec une majuscule
+Il existe 2 versions des pages, la version fun et la version clean, vous pouvez changer entre les deux en changeant la valeur de templates à "templates" ou "clean_templates"
 
 
 
